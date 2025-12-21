@@ -1,1239 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maillards | SF's Best Smash Burgers</title>
+    <title>Maillards Smash Burgers | Outer Sunset SF</title>
+    <meta name="description"
+        content="Crispy, juicy smash burgers at the Outer Sunset Farmers Market on Sundays and Heritage pop-ups on Tuesdays.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --terracotta: #B5856D;
-            --terracotta-dark: #8B6854;
-            --green: #7CB342;
-            --green-dark: #5A8F2D;
-            --black: #1A1A1A;
-            --cream: #FDF8F3;
-            --cream-dark: #F5EDE4;
-            --mustard: #E8B84A;
-            --cheese: #FFD54F;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--black);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Grain overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.03;
-            z-index: 10000;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-            line-height: 1.1;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: var(--black);
-        }
-
-        .logo-duck {
-            width: 60px;
-            height: 60px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover .logo-duck {
-            transform: rotate(-10deg) scale(1.05);
-        }
-
-        .logo-duck img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--terracotta);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--black);
-            color: var(--cream) !important;
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px;
-            transition: all 0.3s ease !important;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--terracotta);
-            transform: translateY(-2px);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--black);
-            margin: 6px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 8rem 0 4rem;
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--green);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.2s;
-            opacity: 0;
-        }
-
-        .hero-badge::before {
-            content: '★';
-            font-size: 0.75rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            color: var(--black);
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.4s;
-            opacity: 0;
-        }
-
-        .hero h1 span {
-            color: var(--terracotta);
-            font-style: italic;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--black);
-            opacity: 0.8;
-            max-width: 500px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.6s;
-            opacity: 0;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.8s;
-            opacity: 0;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--black);
-            color: var(--cream);
-        }
-
-        .btn-primary:hover {
-            background: var(--terracotta);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(181, 133, 109, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--black);
-            border: 2px solid var(--black);
-        }
-
-        .btn-secondary:hover {
-            background: var(--black);
-            color: var(--cream);
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeInRight 1s ease forwards;
-            animation-delay: 0.5s;
-            opacity: 0;
-        }
-
-        .hero-image-main {
-            width: 100%;
-            aspect-ratio: 1;
-            background: var(--terracotta);
-            border-radius: 30px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(181, 133, 109, 0.3);
-        }
-
-        .hero-image-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-float-badge {
-            position: absolute;
-            background: var(--mustard);
-            color: var(--black);
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-float-badge.badge-1 {
-            top: 10%;
-            right: -10%;
-            transform: rotate(5deg);
-        }
-
-        .hero-float-badge.badge-2 {
-            bottom: 15%;
-            left: -5%;
-            background: var(--green);
-            color: white;
-            transform: rotate(-5deg);
-            animation-delay: 1s;
-        }
-
-        /* Marquee */
-        .marquee-section {
-            background: var(--black);
-            padding: 1.25rem 0;
-            overflow: hidden;
-        }
-
-        .marquee {
-            display: flex;
-            animation: marquee 30s linear infinite;
-        }
-
-        .marquee-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            padding-right: 3rem;
-            white-space: nowrap;
-        }
-
-        .marquee-item {
-            color: var(--cream);
-            font-family: 'Fraunces', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .marquee-item::before {
-            content: '◆';
-            color: var(--terracotta);
-            font-size: 0.6rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .about-image {
-            background: var(--terracotta);
-            border-radius: 20px;
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            transition: transform 0.4s ease;
-        }
-
-        .about-image:hover {
-            transform: scale(1.03);
-        }
-
-        .about-image:nth-child(2) {
-            background: var(--green);
-            margin-top: 2rem;
-        }
-
-        .about-image:nth-child(3) {
-            background: var(--mustard);
-            margin-top: -2rem;
-        }
-
-        .about-image:nth-child(4) {
-            background: var(--terracotta-dark);
-        }
-
-        .section-label {
-            display: inline-block;
-            font-family: 'Fraunces', serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--terracotta);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-        }
-
-        .about-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-        }
-
-        .about-content h2 span {
-            color: var(--terracotta);
-            font-style: italic;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: var(--black);
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 2.5rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--terracotta);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--black);
-            opacity: 0.7;
-            margin-top: 0.25rem;
-        }
-
-        /* Menu Section */
-        .menu {
-            padding: 8rem 0;
-            background: var(--black);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, var(--cream), transparent);
-            pointer-events: none;
-        }
-
-        .menu-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .menu-header .section-label {
-            color: var(--mustard);
-        }
-
-        .menu-header h2 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            color: var(--cream);
-        }
-
-        .menu-header h2 span {
-            color: var(--terracotta);
-            font-style: italic;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .menu-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .menu-card:hover::before {
-            opacity: 1;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-5px);
-            border-color: transparent;
-        }
-
-        .menu-card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .menu-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .menu-card h3 {
-            font-size: 1.5rem;
-            color: var(--cream);
-            font-family: 'Fraunces', serif;
-        }
-
-        .menu-card-price {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--mustard);
-        }
-
-        .menu-card p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .menu-card-tag {
-            display: inline-block;
-            background: var(--green);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-
-        .menu-extras {
-            margin-top: 3rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .menu-extra {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .menu-extra h4 {
-            color: var(--cream);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .menu-extra p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
-        }
-
-        .menu-extra .price {
-            color: var(--mustard);
-            font-family: 'Fraunces', serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Locations Section */
-        .locations {
-            padding: 8rem 0;
-            background: var(--cream);
-        }
-
-        .locations-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .locations-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-        }
-
-        .locations-header h2 span {
-            color: var(--terracotta);
-            font-style: italic;
-        }
-
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .location-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .location-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .location-card.featured {
-            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
-            color: white;
-        }
-
-        .location-card.featured h3,
-        .location-card.featured p {
-            color: white;
-        }
-
-        .location-card.featured .location-badge {
-            background: var(--mustard);
-            color: var(--black);
-        }
-
-        .location-badge {
-            display: inline-block;
-            background: var(--green);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
-
-        .location-card h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            font-family: 'Fraunces', serif;
-        }
-
-        .location-card p {
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .location-card .hours {
-            font-weight: 600;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .location-card.featured .hours {
-            border-top-color: rgba(255,255,255,0.2);
-        }
-
-        .coming-soon-card {
-            border: 2px dashed var(--terracotta);
-            background: transparent;
-        }
-
-        .coming-soon-card h3 {
-            color: var(--terracotta);
-        }
-
-        /* Press Section */
-        .press {
-            padding: 8rem 0;
-            background: var(--cream-dark);
-        }
-
-        .press-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .press-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-        }
-
-        .press-header h2 span {
-            color: var(--terracotta);
-            font-style: italic;
-        }
-
-        .press-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .press-logo {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--black);
-            opacity: 0.4;
-            transition: opacity 0.3s ease;
-        }
-
-        .press-logo:hover {
-            opacity: 1;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .testimonial-quote {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--black);
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
-        }
-
-        .testimonial-quote::before {
-            content: '"';
-            color: var(--terracotta);
-            font-size: 3rem;
-            line-height: 0;
-            vertical-align: middle;
-            margin-right: 0.25rem;
-        }
-
-        .testimonial-source {
-            font-weight: 600;
-            color: var(--terracotta);
-        }
-
-        /* Newsletter Section */
-        .newsletter {
-            padding: 6rem 0;
-            background: var(--terracotta);
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 100px;
-            font-size: 1rem;
-            font-family: 'DM Sans', sans-serif;
-            background: white;
-        }
-
-        .newsletter-form input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
-        }
-
-        .newsletter-form button {
-            background: var(--black);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--green);
-            transform: translateY(-2px);
-        }
-
-        /* Instagram Section */
-        .instagram {
-            padding: 6rem 0;
-            background: var(--black);
-            text-align: center;
-        }
-
-        .instagram h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--cream);
-            margin-bottom: 1rem;
-        }
-
-        .instagram p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .instagram-preview {
-            margin-top: 2rem;
-        }
-
-        .instagram-cta {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 3rem 4rem;
-            background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
-            border-radius: 24px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.4s ease;
-        }
-
-        .instagram-cta:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(131, 58, 180, 0.4);
-        }
-
-        .instagram-cta-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .instagram-cta:hover .instagram-cta-icon {
-            transform: scale(1.1);
-        }
-
-        .instagram-cta-text {
-            font-family: 'Fraunces', serif;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .instagram-cta-subtext {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--black);
-            color: var(--cream);
-            padding: 4rem 0 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-brand .logo {
-            color: var(--cream);
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand .logo-duck {
-            background: var(--terracotta);
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-        }
-
-        .footer-col h4 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--cream);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-col a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-col a:hover {
-            color: var(--terracotta);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom p {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            width: 44px;
-            height: 44px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cream);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--terracotta);
-            transform: translateY(-3px);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(5deg);
-            }
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Scroll animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-ctas {
-                justify-content: center;
-            }
-
-            .hero-image {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .hero-float-badge.badge-1 {
-                right: 5%;
-            }
-
-            .hero-float-badge.badge-2 {
-                left: 5%;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding-top: 80px;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .about-images {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .about-stats {
-                flex-wrap: wrap;
-                gap: 2rem;
-            }
-
-            .menu-extras {
-                grid-template-columns: 1fr;
-            }
-
-            .locations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .press-logos {
-                gap: 2rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .instagram-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-images {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image:nth-child(2),
-            .about-image:nth-child(3) {
-                margin-top: 0;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .instagram-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+
+<body id="top">
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="logo">
-            <div class="logo-duck">
-                <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png" alt="Maillards Duck Logo">
-            </div>
+        <a class="logo" href="#top">
+            <span class="logo-duck">
+                <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png"
+                    alt="Maillards Duck Logo">
+            </span>
             <span class="logo-text">Maillards</span>
         </a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
-            <li><a href="#locations">Find Us</a></li>
+            <li><a href="#locations">Schedule</a></li>
             <li><a href="#press">Press</a></li>
             <li><a href="#newsletter" class="nav-cta">Get Updates</a></li>
         </ul>
@@ -1249,17 +44,22 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Smashed to<br><span>Perfection</span></h1>
-                    <p class="hero-description">San Francisco's favorite smash burgers. Crispy edges, juicy centers, and caramelized shallots on every bite. Find us at the Outer Sunset Farmers Market.</p>
-                    <div class="hero-ctas">
-                        <a href="#locations" class="btn btn-primary">Find Us →</a>
-                        <a href="#menu" class="btn btn-secondary">View Menu</a>
+                    <span class="hero-kicker reveal">Outer Sunset pop-up</span>
+                    <h1 class="reveal">Crispy, juicy, and made with love at the Outer Sunset Farmers Market.</h1>
+                    <p class="hero-description reveal">Sundays 9am-2pm at the market. Tuesdays 5pm-9pm at Heritage
+                        Restaurant &amp; Bar with a weekly special. Arrive early - we sell out.</p>
+                    <p class="hero-note reveal">Sunday menu stays the same. Tuesday special changes weekly.</p>
+                    <div class="hero-ctas reveal">
+                        <a href="#locations" class="btn btn-primary">Get Directions</a>
+                        <a href="#menu" class="btn btn-secondary">See Sunday Menu</a>
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-main">
-                        <img src="images/burger-hero.jpg" alt="Maillards signature smash burgers with caramelized onions in green checkered paper">
+                        <img src="images/burger-hero-user.jpg" alt="Maillards smash burger">
                     </div>
+                    <div class="hero-sticker">Sundays 9-2</div>
+                    <div class="hero-sticker alt">Tuesday special</div>
                 </div>
             </div>
         </div>
@@ -1269,16 +69,16 @@
     <div class="marquee-section">
         <div class="marquee">
             <div class="marquee-content">
-                <span class="marquee-item">Outer Sunset Farmers Market</span>
-                <span class="marquee-item">House-Made Everything</span>
-                <span class="marquee-item">Martin's Potato Rolls</span>
-                <span class="marquee-item">Caramelized Shallots</span>
-                <span class="marquee-item">Heritage Restaurant Tuesdays</span>
-                <span class="marquee-item">Outer Sunset Farmers Market</span>
-                <span class="marquee-item">House-Made Everything</span>
-                <span class="marquee-item">Martin's Potato Rolls</span>
-                <span class="marquee-item">Caramelized Shallots</span>
-                <span class="marquee-item">Heritage Restaurant Tuesdays</span>
+                <span class="marquee-item">Outer Sunset</span>
+                <span class="marquee-item">Farmers Market Sundays</span>
+                <span class="marquee-item">Tuesday Specials</span>
+                <span class="marquee-item">Beef Tallow Fries</span>
+                <span class="marquee-item">House Sauce</span>
+                <span class="marquee-item">Outer Sunset</span>
+                <span class="marquee-item">Farmers Market Sundays</span>
+                <span class="marquee-item">Tuesday Specials</span>
+                <span class="marquee-item">Beef Tallow Fries</span>
+                <span class="marquee-item">House Sauce</span>
             </div>
         </div>
     </div>
@@ -1287,18 +87,13 @@
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-images reveal">
-                    <div class="about-image">🍔</div>
-                    <div class="about-image">🧅</div>
-                    <div class="about-image">🧀</div>
-                    <div class="about-image">🥓</div>
-                </div>
                 <div class="about-content">
-                    <span class="section-label reveal">Our Story</span>
-                    <h2 class="reveal">The Science of <span>Delicious</span></h2>
-                    <p class="reveal">Named after the Maillard reaction—the chemical process that creates that irresistible crust on our smashed patties—Maillards was born from a passion for the perfect burger.</p>
-                    <p class="reveal">Founded by Max Ponzurick, a former Virginia Tech baseball player who discovered his true calling in the kitchen, we've been serving up SF's favorite smash burgers at the Outer Sunset Farmers Market since day one.</p>
-                    <p class="reveal">Every burger features paper-thin patties with a seductive, delicate crunch, topped with our signature caramelized shallots, house-made pickles, and that legendary Maillard sauce.</p>
+                    <span class="section-label reveal">Our Focus</span>
+                    <h2 class="reveal">The <span>Burger</span></h2>
+                    <p class="reveal">Thin, lacy edges from a hard smash on a hot plancha. Simple, intentional, and
+                        cooked with care.</p>
+                    <p class="reveal">House-ground beef, caramelized shallots, American cheese, tangy Maillard sauce,
+                        and pickles on a Martin's potato roll. Fries are cooked in beef tallow for extra depth.</p>
                 </div>
             </div>
         </div>
@@ -1308,8 +103,10 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="menu-header">
-                <span class="section-label reveal">The Goods</span>
-                <h2 class="reveal">Our <span>Menu</span></h2>
+                <span class="section-label reveal">Selection</span>
+                <h2 class="reveal">The <span>Menu</span></h2>
+                <p class="menu-note reveal">Sunday menu stays the same. Tuesday special changes weekly - follow
+                    Instagram for the drop.</p>
             </div>
             <div class="menu-grid">
                 <div class="menu-card reveal">
@@ -1318,8 +115,7 @@
                             <h3>The Box</h3>
                             <span class="menu-card-price">$18</span>
                         </div>
-                        <p>The full experience: Maillards Double + Fries + Seasonal Lemonade + Your choice of sauce. Everything you need.</p>
-                        <span class="menu-card-tag">Best Value</span>
+                        <p>Maillards Double + Fries + Lemonade + One Sauce</p>
                     </div>
                 </div>
                 <div class="menu-card reveal">
@@ -1328,8 +124,18 @@
                             <h3>Maillards Double</h3>
                             <span class="menu-card-price">$12</span>
                         </div>
-                        <p>Two beef patties, caramelized shallots, American cheese, Maillard sauce, house-made pickles, Martin's potato roll. Single available for $10.</p>
-                        <span class="menu-card-tag">Fan Favorite</span>
+                        <p>Two beef patties, caramelized shallots, American cheese, Maillard sauce, house pickles,
+                            Martin's potato roll</p>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Single</h3>
+                            <span class="menu-card-price">$10</span>
+                        </div>
+                        <p>One beef patty, caramelized shallots, American cheese, Maillard sauce, house pickles,
+                            Martin's potato roll</p>
                     </div>
                 </div>
                 <div class="menu-card reveal">
@@ -1338,25 +144,35 @@
                             <h3>Breakfast Sammie</h3>
                             <span class="menu-card-price">$10</span>
                         </div>
-                        <p>Homemade buttermilk biscuit, smashed Duroc sausage, American cheese, soft scrambled egg, Moroccan spiced honey. 9-11am only!</p>
-                        <span class="menu-card-tag">Morning Only</span>
+                        <p>Homemade buttermilk biscuit, smashed Duroc sausage, American cheese, soft scrambled egg,
+                            Moroccan spiced honey (Sundays 9-11am)</p>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Tuesday Special</h3>
+                            <span class="menu-card-price">Weekly</span>
+                        </div>
+                        <p>We do a one-off special every Tuesday. Follow Instagram for this week's burger.</p>
+                        <span class="menu-card-tag">Tuesdays only</span>
                     </div>
                 </div>
             </div>
             <div class="menu-extras reveal">
                 <div class="menu-extra">
                     <h4>Fries</h4>
-                    <p>Natural cut, sea salt. Upgrade to Allium Fries with garlic four ways +$1</p>
+                    <p>Regular fries - natural cut fries, sea salt. Allium fries +$1.</p>
                     <div class="price">$5</div>
                 </div>
                 <div class="menu-extra">
                     <h4>Seasonal Beverage</h4>
-                    <p>House lemonade or homemade fermented soda</p>
+                    <p>Seasonal lemonade / Homemade fermented soda</p>
                     <div class="price">$4</div>
                 </div>
                 <div class="menu-extra">
-                    <h4>Extra Sauce</h4>
-                    <p>Maillard Sauce, Buttermilk Ranch, or Smoked Jalapeño Aioli</p>
+                    <h4>Sauces</h4>
+                    <p>Maillard sauce / Homemade buttermilk ranch / Smoked jalapeno aioli</p>
                     <div class="price">$0.50</div>
                 </div>
             </div>
@@ -1367,27 +183,30 @@
     <section class="locations" id="locations">
         <div class="container">
             <div class="locations-header">
-                <span class="section-label reveal">Find Us</span>
-                <h2 class="reveal">Where to Get <span>Your Fix</span></h2>
+                <span class="section-label reveal">Schedule</span>
+                <h2 class="reveal">When &amp; <span>Where</span></h2>
+                <p class="locations-intro reveal">Pop-up service for now, with a permanent home planned for 2026.</p>
             </div>
             <div class="locations-grid">
                 <div class="location-card featured reveal">
-                    <span class="location-badge">Primary Location</span>
+                    <span class="location-badge">Sunday market</span>
                     <h3>Outer Sunset Farmers Market</h3>
-                    <p>1994 37th Ave<br>San Francisco, CA 94122</p>
-                    <p class="hours">📅 Every Sunday • ⏰ 9AM - 2PM (often sells out!)</p>
+                    <p>1994 37th Ave<br>San Francisco, CA 94116</p>
+                    <p class="hours">Sundays 9am - 2pm</p>
+                    <p class="location-note">Menu stays the same each Sunday. Arrive early - we sell out.</p>
                 </div>
                 <div class="location-card reveal">
-                    <span class="location-badge">Tuesday Pop-Up</span>
-                    <h3>Heritage Restaurant</h3>
-                    <p>708 Clement St<br>San Francisco, CA</p>
-                    <p class="hours">📅 Tuesdays • ⏰ 5PM - 9PM</p>
+                    <span class="location-badge">Tuesday pop-up</span>
+                    <h3>Heritage Restaurant &amp; Bar</h3>
+                    <p>708 Clement St<br>San Francisco, CA 94118</p>
+                    <p class="hours">Tuesdays 5pm - 9pm</p>
+                    <p class="location-note">Weekly special. Follow Instagram for this week's burger.</p>
                 </div>
                 <div class="location-card coming-soon-card reveal">
-                    <span class="location-badge" style="background: var(--mustard); color: var(--black);">Coming 2026!</span>
-                    <h3>Permanent Home</h3>
-                    <p>3821 Noriega St<br>San Francisco, CA</p>
-                    <p>Partnering with Two Pitchers Brewing Co. Craft beer + smash burgers. Stay tuned!</p>
+                    <span class="location-badge">2026</span>
+                    <h3>Noriega St.</h3>
+                    <p>Brick &amp; mortar in the Outer Sunset.</p>
+                    <p>Opening in 2026. Updates via the newsletter.</p>
                 </div>
             </div>
         </div>
@@ -1397,29 +216,25 @@
     <section class="press" id="press">
         <div class="container">
             <div class="press-header">
-                <span class="section-label reveal">In The Press</span>
-                <h2 class="reveal">What They're <span>Saying</span></h2>
+                <span class="section-label reveal">Press</span>
+                <h2 class="reveal">Local <span>Love</span></h2>
+                <p class="press-intro reveal">Recent mentions and reviews.</p>
             </div>
             <div class="press-logos reveal">
-                <span class="press-logo">SF Chronicle</span>
-                <span class="press-logo">The Infatuation</span>
-                <span class="press-logo">SFGate</span>
-                <span class="press-logo">SF Standard</span>
-                <span class="press-logo">Eater SF</span>
-            </div>
-            <div class="testimonials">
-                <div class="testimonial reveal">
-                    <p class="testimonial-quote">Smashburger utopia</p>
-                    <p class="testimonial-source">— The Infatuation</p>
-                </div>
-                <div class="testimonial reveal">
-                    <p class="testimonial-quote">The best smashburgers in San Francisco, second-best in the entire Bay Area</p>
-                    <p class="testimonial-source">— SF Chronicle</p>
-                </div>
-                <div class="testimonial reveal">
-                    <p class="testimonial-quote">The patties are pressed so thin they could be classified as chips, but that doesn't mean they aren't also tender and juicy</p>
-                    <p class="testimonial-source">— SFGate</p>
-                </div>
+                <a href="https://www.theinfatuation.com/san-francisco/reviews/maillards" target="_blank" rel="noopener">
+                    <img src="images/logos/theinfatuation.svg" alt="The Infatuation" class="press-logo">
+                </a>
+                <a href="https://www.sfgate.com/food/article/best-sf-smash-burger-maillards-18420425.php"
+                    target="_blank" rel="noopener">
+                    <img src="images/logos/sfgate.svg" alt="SFGATE" class="press-logo">
+                </a>
+                <a href="https://sf.eater.com/maps/best-burgers-san-francisco-1" target="_blank" rel="noopener">
+                    <img src="images/logos/eater.svg" alt="Eater SF" class="press-logo">
+                </a>
+                <a href="https://www.sfchronicle.com/food/restaurants/article/best-smashburgers-bay-area-19470479.php"
+                    target="_blank" rel="noopener">
+                    <img src="images/logos/sfchronicle.svg" alt="SF Chronicle" class="press-logo">
+                </a>
             </div>
         </div>
     </section>
@@ -1427,28 +242,30 @@
     <!-- Newsletter Section -->
     <section class="newsletter" id="newsletter">
         <div class="container">
-            <h2 class="reveal">Stay in the Loop</h2>
-            <p class="reveal">Be the first to know about our permanent location opening, special events, and secret menu drops.</p>
+            <h2 class="reveal">Noriega 2026.</h2>
+            <p class="reveal">Sign up for updates on our 2026 opening and Tuesday specials.</p>
             <form class="newsletter-form reveal" action="https://formspree.io/f/maillards" method="POST">
-                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" placeholder="Email address" required>
                 <button type="submit">Subscribe</button>
             </form>
-            <p class="newsletter-success" style="display: none; color: white; margin-top: 1rem; font-weight: 600;">Thanks for subscribing! We'll keep you posted.</p>
         </div>
     </section>
 
     <!-- Instagram Section -->
     <section class="instagram">
         <div class="container">
-            <h2 class="reveal">Follow the Sizzle</h2>
-            <p class="reveal">Follow along for the latest drops and behind-the-scenes action</p>
+            <h2 class="reveal">@maillards.sf</h2>
+            <p class="reveal">Weekly specials and pop-up updates live here.</p>
             <div class="instagram-preview reveal">
-                <a href="https://instagram.com/maillards.sf" target="_blank" class="instagram-cta">
+                <a href="https://instagram.com/maillards.sf" target="_blank" rel="noopener" class="instagram-cta">
                     <div class="instagram-cta-icon">
-                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
                     </div>
-                    <span class="instagram-cta-text">@maillards.sf</span>
-                    <span class="instagram-cta-subtext">See our latest posts →</span>
+                    <span class="instagram-cta-text">Follow along</span>
+                    <span class="instagram-cta-subtext">This week's special and pop-up updates →</span>
                 </a>
             </div>
         </div>
@@ -1459,45 +276,50 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-duck">
-                            <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png" alt="Maillards Duck Logo">
-                        </div>
+                    <a href="#top" class="logo">
+                        <span class="logo-duck">
+                            <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png"
+                                alt="Maillards Duck Logo">
+                        </span>
                         <span class="logo-text">Maillards</span>
                     </a>
-                    <p>San Francisco's favorite smash burgers. Crispy, juicy, and made with love at the Outer Sunset Farmers Market.</p>
+                    <p>Crispy, juicy, and made with love at the Outer Sunset Farmers Market.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#menu">Menu</a></li>
-                        <li><a href="#locations">Locations</a></li>
+                        <li><a href="#locations">Schedule</a></li>
                         <li><a href="#press">Press</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Find Us</h4>
                     <ul>
-                        <li><a href="#locations">Outer Sunset Market</a></li>
-                        <li><a href="#locations">Heritage Restaurant</a></li>
-                        <li><a href="#locations">Coming 2026: Noriega St</a></li>
+                        <li><a href="#locations">Outer Sunset Farmers Market</a></li>
+                        <li><a href="#locations">Heritage Restaurant &amp; Bar</a></li>
+                        <li><a href="#newsletter">Noriega St. Updates</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
                     <ul>
-                        <li><a href="https://instagram.com/maillards.sf" target="_blank">Instagram</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Catering</a></li>
+                        <li><a href="https://instagram.com/maillards.sf" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#locations">Pop-up Schedule</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2024 Maillards Smash Burgers. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/maillards.sf" target="_blank" aria-label="Instagram">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <a href="https://instagram.com/maillards.sf" target="_blank" rel="noopener"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -1535,7 +357,7 @@
 
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1556,4 +378,5 @@
         });
     </script>
 </body>
+
 </html>
