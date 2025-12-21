@@ -94,6 +94,8 @@ nav.scrolled {
 .logo-duck {
     width: 64px;
     height: 64px;
+    border-radius: 18px;
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
@@ -105,6 +107,7 @@ nav.scrolled {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    display: block;
 }
 
 .logo-text {
