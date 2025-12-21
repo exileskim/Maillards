@@ -122,8 +122,13 @@ nav .logo-text {
 }
 
 nav .logo-duck {
-    width: 104px;
-    height: 104px;
+    width: 128px;
+    height: 128px;
+}
+
+nav .logo-duck img {
+    transform: scale(1.12);
+    transform-origin: center;
 }
 
 .nav-links {
@@ -1054,6 +1059,15 @@ footer {
         margin: 0 auto;
     }
 
+    nav .logo-duck {
+        width: 96px;
+        height: 96px;
+    }
+
+    nav .logo-duck img {
+        transform: scale(1.08);
+    }
+
     .footer-content {
         grid-template-columns: 1fr 1fr;
     }
@@ -1090,6 +1104,10 @@ footer {
     nav .logo-duck {
         width: 64px;
         height: 64px;
+    }
+
+    nav .logo-duck img {
+        transform: none;
     }
 
     .hero {
