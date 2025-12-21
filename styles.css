@@ -1080,6 +1080,13 @@ footer {
 }
 
 @media (max-width: 900px) {
+    nav {
+        position: sticky;
+        top: 0;
+        background: rgba(251, 244, 236, 0.92);
+        backdrop-filter: blur(12px);
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -1117,7 +1124,7 @@ footer {
     }
 
     .hero {
-        padding-top: 80px;
+        padding-top: 40px;
     }
 
     .hero h1 {
