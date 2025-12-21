@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -206,6 +207,11 @@ nav .logo-duck img {
     background: linear-gradient(135deg, #fff3e6 0%, var(--cream) 45%, #f8dcc4 100%);
 }
 
+@supports (height: 100svh) {
+    .hero {
+        min-height: 100svh;
+    }
+}
 .hero::before {
     content: '';
     position: absolute;
