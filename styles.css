@@ -653,35 +653,36 @@ nav.scrolled {
     font-size: clamp(2.5rem, 5vw, 4rem);
 }
 
-.press-header h2 span {
-    color: var(--terracotta);
-}
-
 .press-intro {
     margin-top: 1rem;
     color: rgba(27, 18, 11, 0.7);
 }
 
-.press-logos {
+.press-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
-    align-items: center;
 }
 
-.press-logos a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
+.press-item {
     background: rgba(255, 255, 255, 0.7);
     border-radius: 18px;
     border: 1px solid rgba(27, 18, 11, 0.08);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     transition: transform 0.3s ease;
 }
 
-.press-logos a:hover {
+.press-item:hover {
     transform: translateY(-4px);
+}
+
+.press-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .press-logo {
@@ -689,6 +690,12 @@ nav.scrolled {
     width: auto;
     display: block;
     filter: brightness(0) saturate(100%) invert(48%) sepia(29%) saturate(689%) hue-rotate(338deg) brightness(93%) contrast(89%);
+}
+
+.press-blurb {
+    font-size: 0.95rem;
+    color: rgba(27, 18, 11, 0.75);
+    line-height: 1.5;
 }
 
 /* Newsletter Section */
