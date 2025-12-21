@@ -439,10 +439,6 @@ body[data-theme="night"] .hero-sticker.alt {
     color: #f7efe3;
 }
 
-body[data-theme="night"] .marquee-section {
-    background: #070504;
-}
-
 body[data-theme="night"] .about {
     background: #120b08;
 }
@@ -553,42 +549,6 @@ body[data-theme="night"] footer {
 
 body[data-theme="night"] .footer-col a {
     color: rgba(247, 239, 227, 0.65);
-}
-
-/* Marquee */
-.marquee-section {
-    background: var(--black);
-    padding: 1.2rem 0;
-    overflow: hidden;
-}
-
-.marquee {
-    display: flex;
-    animation: marquee 26s linear infinite;
-}
-
-.marquee-content {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    padding-right: 3rem;
-    white-space: nowrap;
-}
-
-.marquee-item {
-    color: var(--cream);
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.marquee-item::before {
-    content: '◆';
-    color: var(--mustard);
-    font-size: 0.6rem;
 }
 
 /* About Section */
@@ -1233,16 +1193,6 @@ footer {
 
     50% {
         transform: translateY(-12px) rotate(5deg);
-    }
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
     }
 }
 
