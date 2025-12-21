@@ -69,7 +69,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,8 +122,8 @@ nav .logo-text {
 }
 
 nav .logo-duck {
-    width: 96px;
-    height: 96px;
+    width: 104px;
+    height: 104px;
 }
 
 .nav-links {
