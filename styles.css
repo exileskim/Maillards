@@ -323,97 +323,17 @@ nav.scrolled {
 }
 
 
-/* About Section - Dictionary Entry */
+/* About Section */
 .about {
     padding: 8rem 0;
     position: relative;
-    background: var(--cream);
 }
 
-.about-content-new {
-    max-width: 720px;
-    margin: 0 auto;
-}
-
-.dictionary-entry {
-    background: white;
-    border-radius: 24px;
-    padding: 3.5rem 4rem;
-    box-shadow: 0 8px 40px rgba(27, 18, 11, 0.08);
-    border: 1px solid rgba(27, 18, 11, 0.06);
-    position: relative;
-}
-
-.dictionary-entry::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 3rem;
-    right: 3rem;
-    height: 4px;
-    background: linear-gradient(90deg, var(--terracotta), var(--mustard));
-    border-radius: 0 0 4px 4px;
-}
-
-.word-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.25rem;
-    margin-bottom: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.word {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 700;
-    color: var(--black);
-    letter-spacing: -0.02em;
-}
-
-.pronunciation {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.35rem;
-    color: var(--terracotta);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.word-type {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: rgba(27, 18, 11, 0.5);
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(27, 18, 11, 0.1);
-}
-
-.definition {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    align-items: flex-start;
-}
-
-.definition:last-child {
-    margin-bottom: 0;
-}
-
-.def-number {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    color: var(--terracotta);
-    font-size: 1rem;
-    flex-shrink: 0;
-    margin-top: 0.15rem;
-}
-
-.def-text {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: var(--black);
-    opacity: 0.85;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6rem;
+    align-items: center;
 }
 
 .section-label {
@@ -425,6 +345,39 @@ nav.scrolled {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
+}
+
+.about-content h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+}
+
+.about-content h2 span {
+    color: var(--terracotta);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+/* Inline pronunciation styling */
+.maillard-word {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+.maillard-pronunciation {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--terracotta);
+    font-weight: 500;
+    font-size: 0.95em;
+    letter-spacing: 0.01em;
 }
 
 /* Menu Section */
@@ -1122,27 +1075,6 @@ footer {
 
     .hero h1 {
         font-size: 2.8rem;
-    }
-
-    .dictionary-entry {
-        padding: 2rem 1.5rem;
-    }
-
-    .dictionary-entry::before {
-        left: 1.5rem;
-        right: 1.5rem;
-    }
-
-    .word {
-        font-size: 2.5rem;
-    }
-
-    .pronunciation {
-        font-size: 1.1rem;
-    }
-
-    .def-text {
-        font-size: 1rem;
     }
 
     .menu-extras {
