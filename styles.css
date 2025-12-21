@@ -1111,7 +1111,7 @@ footer {
 
 @media (max-width: 768px) {
     nav {
-        padding: 0.6rem 1.25rem;
+        padding: 0.5rem 1.1rem;
     }
 
     nav .logo-duck {
@@ -1124,17 +1124,17 @@ footer {
     }
 
     .hero {
-        padding-top: 24px;
+        padding-top: 12px;
     }
 
     .hero-content {
-        padding: 5.5rem 0 2.5rem;
-        gap: 2.5rem;
+        padding: 4.25rem 0 2rem;
+        gap: 2rem;
     }
 
     .hero-kickers {
         justify-content: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     .hero-kicker {
@@ -1153,6 +1153,7 @@ footer {
 
     .hero-note {
         font-size: 0.9rem;
+        margin-bottom: 1.25rem;
     }
 
     .menu-extras {
