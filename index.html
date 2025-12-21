@@ -93,13 +93,8 @@
         }
 
         .logo-duck {
-            width: 50px;
-            height: 50px;
-            background: var(--terracotta);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 60px;
+            height: 60px;
             transition: transform 0.3s ease;
         }
 
@@ -107,9 +102,10 @@
             transform: rotate(-10deg) scale(1.05);
         }
 
-        .logo-duck svg {
-            width: 32px;
-            height: 32px;
+        .logo-duck img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -315,32 +311,10 @@
             box-shadow: 0 30px 60px rgba(181, 133, 109, 0.3);
         }
 
-        .hero-image-main::before {
-            content: '🍔';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 8rem;
-            opacity: 0.3;
-        }
-
-        .hero-image-placeholder {
+        .hero-image-main img {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero-image-placeholder span {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            opacity: 0.9;
+            object-fit: cover;
         }
 
         .hero-float-badge {
@@ -922,51 +896,57 @@
         .instagram p {
             color: rgba(255,255,255,0.7);
             margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 0.5rem;
+        .instagram-preview {
             margin-top: 2rem;
         }
 
-        .instagram-item {
-            aspect-ratio: 1;
-            background: var(--terracotta);
-            opacity: 0.7;
-            transition: all 0.3s ease;
+        .instagram-cta {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 3rem 4rem;
+            background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+            border-radius: 24px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .instagram-cta:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(131, 58, 180, 0.4);
+        }
+
+        .instagram-cta-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-cta:hover .instagram-cta-icon {
+            transform: scale(1.1);
+        }
+
+        .instagram-cta-text {
+            font-family: 'Fraunces', serif;
             font-size: 2rem;
+            font-weight: 700;
         }
 
-        .instagram-item:hover {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .instagram-item:nth-child(2) { background: var(--green); }
-        .instagram-item:nth-child(3) { background: var(--mustard); }
-        .instagram-item:nth-child(4) { background: var(--terracotta-dark); }
-        .instagram-item:nth-child(5) { background: var(--green-dark); }
-        .instagram-item:nth-child(6) { background: var(--terracotta); }
-
-        .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--cream);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin-top: 2rem;
-            transition: color 0.3s ease;
-        }
-
-        .instagram-link:hover {
-            color: var(--terracotta);
+        .instagram-cta-subtext {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         /* Footer */
@@ -1246,18 +1226,7 @@
     <nav id="navbar">
         <a href="#" class="logo">
             <div class="logo-duck">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="50" cy="60" rx="35" ry="30" fill="#FDF8F3"/>
-                    <circle cx="50" cy="35" r="25" fill="#FDF8F3"/>
-                    <circle cx="42" cy="30" r="4" fill="#1A1A1A"/>
-                    <ellipse cx="62" cy="35" rx="12" ry="6" fill="#7CB342"/>
-                    <path d="M30 65 Q25 75 35 80" stroke="#E8B84A" stroke-width="6" stroke-linecap="round"/>
-                    <path d="M70 65 Q75 75 65 80" stroke="#E8B84A" stroke-width="6" stroke-linecap="round"/>
-                    <ellipse cx="70" cy="55" rx="20" ry="8" fill="#B5856D" transform="rotate(-15 70 55)"/>
-                    <rect x="55" y="48" width="30" height="4" rx="2" fill="#7CB342" transform="rotate(-15 55 48)"/>
-                    <rect x="56" y="54" width="28" height="5" rx="2" fill="#FFD54F" transform="rotate(-15 56 54)"/>
-                    <rect x="57" y="60" width="26" height="4" rx="2" fill="#8B6854" transform="rotate(-15 57 60)"/>
-                </svg>
+                <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png" alt="Maillards Duck Logo">
             </div>
             <span class="logo-text">Maillards</span>
         </a>
@@ -1429,12 +1398,12 @@
                     <span class="location-badge">Primary Location</span>
                     <h3>Outer Sunset Farmers Market</h3>
                     <p>1994 37th Ave<br>San Francisco, CA 94122</p>
-                    <p class="hours">📅 Every Sunday • ⏰ 9AM until sold out!</p>
+                    <p class="hours">📅 Every Sunday • ⏰ 9AM - 2PM (often sells out!)</p>
                 </div>
                 <div class="location-card reveal">
                     <span class="location-badge">Tuesday Pop-Up</span>
                     <h3>Heritage Restaurant</h3>
-                    <p>San Francisco</p>
+                    <p>708 Clement St<br>San Francisco, CA</p>
                     <p class="hours">📅 Tuesdays • ⏰ 5PM - 9PM</p>
                 </div>
                 <div class="location-card coming-soon-card reveal">
@@ -1483,10 +1452,11 @@
         <div class="container">
             <h2 class="reveal">Stay in the Loop</h2>
             <p class="reveal">Be the first to know about our permanent location opening, special events, and secret menu drops.</p>
-            <form class="newsletter-form reveal" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                <input type="email" placeholder="Enter your email" required>
+            <form class="newsletter-form reveal" action="https://formspree.io/f/maillards" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
             </form>
+            <p class="newsletter-success" style="display: none; color: white; margin-top: 1rem; font-weight: 600;">Thanks for subscribing! We'll keep you posted.</p>
         </div>
     </section>
 
@@ -1494,18 +1464,16 @@
     <section class="instagram">
         <div class="container">
             <h2 class="reveal">Follow the Sizzle</h2>
-            <p class="reveal">Join 9,400+ burger lovers on Instagram</p>
-            <div class="instagram-grid reveal">
-                <div class="instagram-item">📸</div>
-                <div class="instagram-item">🍔</div>
-                <div class="instagram-item">🔥</div>
-                <div class="instagram-item">🧀</div>
-                <div class="instagram-item">🍟</div>
-                <div class="instagram-item">😋</div>
+            <p class="reveal">Join 9,400+ burger lovers on Instagram for the latest drops and behind-the-scenes action</p>
+            <div class="instagram-preview reveal">
+                <a href="https://instagram.com/maillards.sf" target="_blank" class="instagram-cta">
+                    <div class="instagram-cta-icon">
+                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <span class="instagram-cta-text">@maillards.sf</span>
+                    <span class="instagram-cta-subtext">See our latest posts →</span>
+                </a>
             </div>
-            <a href="https://instagram.com/maillards.sf" target="_blank" class="instagram-link reveal">
-                @maillards.sf →
-            </a>
         </div>
     </section>
 
@@ -1516,14 +1484,7 @@
                 <div class="footer-brand">
                     <a href="#" class="logo">
                         <div class="logo-duck">
-                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="50" cy="60" rx="35" ry="30" fill="#FDF8F3"/>
-                                <circle cx="50" cy="35" r="25" fill="#FDF8F3"/>
-                                <circle cx="42" cy="30" r="4" fill="#1A1A1A"/>
-                                <ellipse cx="62" cy="35" rx="12" ry="6" fill="#7CB342"/>
-                                <path d="M30 65 Q25 75 35 80" stroke="#E8B84A" stroke-width="6" stroke-linecap="round"/>
-                                <path d="M70 65 Q75 75 65 80" stroke="#E8B84A" stroke-width="6" stroke-linecap="round"/>
-                            </svg>
+                            <img src="https://static.wixstatic.com/media/027052_2efb8082a2fc4921882126472da5246c~mv2.png" alt="Maillards Duck Logo">
                         </div>
                         <span class="logo-text">Maillards</span>
                     </a>
@@ -1541,9 +1502,9 @@
                 <div class="footer-col">
                     <h4>Find Us</h4>
                     <ul>
-                        <li><a href="#">Outer Sunset Market</a></li>
-                        <li><a href="#">Heritage Restaurant</a></li>
-                        <li><a href="#">Coming Soon: Noriega St</a></li>
+                        <li><a href="#locations">Outer Sunset Market</a></li>
+                        <li><a href="#locations">Heritage Restaurant</a></li>
+                        <li><a href="#locations">Coming 2026: Noriega St</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
