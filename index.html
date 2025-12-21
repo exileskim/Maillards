@@ -44,22 +44,31 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="hero-kicker reveal">Outer Sunset pop-up</span>
+                    <span class="hero-kicker reveal" data-theme-option="day">Outer Sunset pop-up</span>
+                    <span class="hero-kicker reveal" data-theme-option="night">Tuesday night pop-up</span>
                     <h1 class="reveal">Crispy, juicy, and made with love at the Outer Sunset Farmers Market.</h1>
-                    <p class="hero-description reveal">Sundays 9am-2pm at the market. Tuesdays 5pm-9pm at Heritage
-                        Restaurant &amp; Bar with a weekly special. Arrive early - we sell out.</p>
-                    <p class="hero-note reveal">Sunday menu stays the same. Tuesday special changes weekly.</p>
+                    <p class="hero-description reveal" data-theme-option="day">Sundays 9am-2pm at the market. Tuesdays
+                        5pm-9pm at Heritage Restaurant &amp; Bar with a weekly special. Arrive early - we sell out.</p>
+                    <p class="hero-description reveal" data-theme-option="night">Tonight at Heritage Restaurant &amp;
+                        Bar, 5pm-9pm. One weekly special, plus the classics. Arrive early - we sell out.</p>
+                    <p class="hero-note reveal" data-theme-option="day">Sunday menu stays the same. Tuesday special
+                        changes weekly.</p>
+                    <p class="hero-note reveal" data-theme-option="night">Tuesday special changes weekly. Sunday menu
+                        returns at the market.</p>
                     <div class="hero-ctas reveal">
                         <a href="#locations" class="btn btn-primary">Get Directions</a>
-                        <a href="#menu" class="btn btn-secondary">See Sunday Menu</a>
+                        <a href="#menu" class="btn btn-secondary" data-theme-option="day">See Sunday Menu</a>
+                        <a href="#menu" class="btn btn-secondary" data-theme-option="night">See Tuesday Special</a>
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-main">
                         <img src="images/burger-hero-user.jpg" alt="Maillards smash burger">
                     </div>
-                    <div class="hero-sticker">Sundays 9-2</div>
-                    <div class="hero-sticker alt">Tuesday special</div>
+                    <div class="hero-sticker" data-theme-option="day">Sundays 9-2</div>
+                    <div class="hero-sticker" data-theme-option="night">Tonight 5-9</div>
+                    <div class="hero-sticker alt" data-theme-option="day">Tuesday special</div>
+                    <div class="hero-sticker alt" data-theme-option="night">Weekly special</div>
                 </div>
             </div>
         </div>
@@ -195,7 +204,7 @@
                     <p class="hours">Sundays 9am - 2pm</p>
                     <p class="location-note">Menu stays the same each Sunday. Arrive early - we sell out.</p>
                 </div>
-                <div class="location-card reveal">
+                <div class="location-card reveal tuesday-card">
                     <span class="location-badge">Tuesday pop-up</span>
                     <h3>Heritage Restaurant &amp; Bar</h3>
                     <p>708 Clement St<br>San Francisco, CA 94118</p>
@@ -327,6 +336,28 @@
     </footer>
 
     <script>
+        // Theme toggle for Tuesday night pop-up
+        const themeParam = new URLSearchParams(window.location.search).get('theme');
+        const applyTheme = (value) => {
+            if (value === 'night') {
+                document.body.setAttribute('data-theme', 'night');
+            } else {
+                document.body.removeAttribute('data-theme');
+            }
+        };
+
+        if (themeParam === 'night' || themeParam === 'day') {
+            applyTheme(themeParam);
+        } else {
+            const weekday = new Intl.DateTimeFormat('en-US', {
+                weekday: 'long',
+                timeZone: 'America/Los_Angeles'
+            }).format(new Date());
+            if (weekday === 'Tuesday') {
+                applyTheme('night');
+            }
+        }
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
