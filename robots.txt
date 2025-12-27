@@ -1,0 +1,8 @@
+# Robots.txt for Maillards
+# https://www.maillardssf.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.maillardssf.com/sitemap.xml
