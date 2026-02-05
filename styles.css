@@ -831,6 +831,85 @@ nav .logo-duck img {
     transform: translateY(-2px);
 }
 
+.newsletter-form--embed {
+    display: block;
+    gap: 0;
+}
+
+.newsletter-form--embed .newsletter-embed {
+    position: relative;
+    width: 100%;
+    --newsletter-embed-button-width: clamp(140px, 30%, 180px);
+    border-radius: 100px;
+    overflow: hidden;
+    background: white;
+}
+
+.newsletter-form--embed .newsletter-embed::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background: linear-gradient(
+        to right,
+        white 0,
+        white calc(100% - var(--newsletter-embed-button-width)),
+        var(--black) calc(100% - var(--newsletter-embed-button-width)),
+        var(--black) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.newsletter-form--embed .newsletter-embed iframe {
+    display: block;
+    width: calc(100% + 14px);
+    height: 66px;
+    margin: -7px;
+    border: 0;
+}
+
+.newsletter-form--embed .newsletter-embed::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--newsletter-embed-button-width);
+    background: var(--black);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.newsletter-form--embed .newsletter-embed:hover::after {
+    background: var(--green);
+}
+
+.newsletter-form--embed .newsletter-embed:hover::before {
+    background: linear-gradient(
+        to right,
+        white 0,
+        white calc(100% - var(--newsletter-embed-button-width)),
+        var(--green) calc(100% - var(--newsletter-embed-button-width)),
+        var(--green) 100%
+    );
+}
+
+.newsletter-form--embed .newsletter-embed-label {
+    position: absolute;
+    top: 50%;
+    right: 1.75rem;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 3;
+}
+
 /* Instagram Section */
 .instagram {
     padding: 6rem 0;
